@@ -5,7 +5,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from '../src/theme';
 import Layout from "../components/layout";
 import { DefaultSeo } from 'next-seo';
-import SEO from './next-seo.config';
+import SEO from '../components/next-seo.config';
 
 export default function SubNubWeb(props) {
   const { Component, pageProps } = props;
