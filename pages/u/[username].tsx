@@ -8,7 +8,7 @@ import {CircularProgress, Container} from '@material-ui/core';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import Box from '@material-ui/core/Box';
 import {CLUBHOUSE_BG_COLOR, CLUBHOUSE_BTN_BG_COLOR, CLUBHOUSE_CARD_COLOR} from '../../components/constants';
-import {getProfileScreenDataByUsername} from '../../components/profile-api';
+import {getProfileScreenDataByUsername} from '../../components/api/profile-api';
 import Head from 'next/head';
 import {NextSeo} from 'next-seo';
 import {clipText} from '../../components/utils';

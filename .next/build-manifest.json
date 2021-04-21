@@ -29,6 +29,16 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
+    "/c/[communityId]": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/c/[communityId].js"
+    ],
+    "/support": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/support.js"
+    ],
     "/u/[username]": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",

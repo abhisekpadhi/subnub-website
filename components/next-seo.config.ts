@@ -14,7 +14,7 @@ export default {
     },
     additionalMetaTags: [
         {
-            charset: 'utf-8'
+            charSet: 'utf-8'
         },
         {
             name: 'viewport',
