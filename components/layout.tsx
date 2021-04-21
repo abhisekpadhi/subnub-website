@@ -1,17 +1,17 @@
 import React from 'react';
 import {Button} from '@material-ui/core';
 import Box from '@material-ui/core/Box';
-import Image from 'next/image';
 import {createStyles, makeStyles, Theme} from '@material-ui/core/styles';
 import {CLUBHOUSE_BG_COLOR} from './constants';
 import Footer from './footer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import {useHistory} from 'react-router-dom';
+import Link from 'next/link'
+import {useRouter} from 'next/router';
 
 function Layout(props: any) {
     const classes = useStyles();
-    const history = useHistory();
+    const router = useRouter();
     return (
         <Box
             display={'flex'}
@@ -25,14 +25,11 @@ function Layout(props: any) {
                 flex={0.95}
             >
                 <Box className={classes.container}>
-                    <AppBar position="static" style={{backgroundColor: CLUBHOUSE_BG_COLOR, boxShadow: 'none'}}>
+                    <AppBar position="static" style={{backgroundColor: CLUBHOUSE_BG_COLOR, boxShadow: 'none', paddingTop: '10px', paddingBottom: '10px'}}>
                         <Toolbar>
                             <Box className={classes.title}>
-                                <Button
-                                    onClick={() => history.push('/')}
-                                    className={classes.titleBtn}
-                                >
-                                    <Image
+                                <Button className={classes.titleBtn} onClick={() => router.push('/')}>
+                                    <img
                                         src={'/static/img/sbnb-icon.jpg'}
                                         alt={'subnub on app store'}
                                         width={38}
@@ -96,6 +93,7 @@ const useStyles = makeStyles((theme: Theme) =>
             fontFamily: 'Lexend Deca, sans-serif',
             fontSize: '1.65rem',
             fontWeight: 'bold',
+            marginLeft: 10,
         },
         logoContainer: {
             display: 'flex',

@@ -8,7 +8,7 @@ import {CircularProgress, Container} from '@material-ui/core';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import Box from '@material-ui/core/Box';
 import {CLUBHOUSE_BG_COLOR, CLUBHOUSE_BTN_BG_COLOR, CLUBHOUSE_CARD_COLOR} from '../../components/constants';
-import {getProfileScreenDataByUsername} from '../api/profile';
+import {getProfileScreenDataByUsername} from '../../components/profile-api';
 import Head from 'next/head';
 
 function CHProfile(props: any) {

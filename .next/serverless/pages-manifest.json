@@ -1,0 +1,6 @@
+{
+  "/": "pages/index.html",
+  "/u/[username]": "pages/u/[username].js",
+  "/_error": "pages/_error.js",
+  "/404": "pages/404.html"
+}

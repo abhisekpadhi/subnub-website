@@ -10,7 +10,6 @@ import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import Box from '@material-ui/core/Box';
 import dayjs from 'dayjs';
 import {CLUBHOUSE_BG_COLOR} from './constants';
-import Image from 'next/image';
 
 function Footer() {
     const classes = useStyles();
@@ -24,7 +23,7 @@ function Footer() {
                         <Box display={'flex'} flexDirection={'row'} alignItems={'center'} justifyContent={'center'}>
                             <Box display={'flex'}>
                                 <a target='_blank' href={'https://play.google.com/store/apps/details?id=com.subnub&hl=en_IN&gl=IN'}>
-                                    <Image
+                                    <img
                                         src={'/static/img/google-play-badge.webp'}
                                         alt={'subnub on google play store'}
                                         width={164}
@@ -35,7 +34,7 @@ function Footer() {
 
                             <Box display={'flex'} flexDirection={'column'} alignItems={'center'}>
                                 <a target='_blank' href={'https://apps.apple.com/app/id1560234791'}>
-                                    <Image
+                                    <img
                                         src={'/static/img/app-store-badge.webp'}
                                         alt={'subnub on app store'}
                                         width={128}
