@@ -4,33 +4,36 @@ import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import {createStyles, makeStyles, Theme} from '@material-ui/core/styles';
 import {CLUBHOUSE_BG_COLOR} from '../components/constants';
-import Head from 'next/head'
+import {NextSeo} from 'next-seo';
 
 function Home() {
     const classes = useStyles();
     return (
         <Container>
-            <Head>
-                <title>SubNub: Drop-in audio chat social network</title>
-                <meta name="title" content="SubNub" />
-                <meta name="description" content="SubNub is a brand new social network that enables creators and audience to connect intimately and casually through audio-only chatroom conversations." />
-
-                <meta property="og:type" content="website" />
-                <meta property="og:url" content="https://subnub.com/" />
-                <meta property="og:title" content="SubNub" />
-                <meta property="og:description" content="SubNub is a brand new social network that enables creators and audience to connect intimately and casually through audio-only chatroom conversations." />
-                <meta property="og:image" content="/static/img/app_screnshot.png" />
-
-                <meta property="twitter:card" content="summary_large_image" />
-                <meta property="twitter:url" content="https://subnub.com" />
-                <meta property="twitter:title" content="SubNub" />
-                <meta property="twitter:description" content="SubNub is a brand new social network that enables creators and audience to connect intimately and casually through audio-only chatroom conversations." />
-                <meta property="twitter:image" content="/static/img/app_screnshot.png" />
-
-                <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca&family=Nunito:wght@400;600&display=swap" rel="stylesheet" />
-                {process.browser && (<link rel="canonical" href={window.location.href}/>)}
-            </Head>
-
+            <NextSeo
+                title={'SubNub: Drop-in audio chat social network'}
+                description="SubNub is a brand new social network that enables creators and audience to connect intimately and casually through audio-only chatroom conversations."
+                canonical="https://subnub.com/"
+                openGraph={{
+                    url: 'https://subnub.com/',
+                    title: 'SubNub: Drop-in audio chat social network',
+                    description: "SubNub is a brand new social network that enables creators and audience to connect intimately and casually through audio-only chatroom conversations.",
+                    images: [
+                        {
+                            url: '/static/img/app_screnshot.png',
+                            width: 800,
+                            height: 600,
+                            alt: 'subnub',
+                        },
+                    ],
+                }}
+                twitter={{
+                    handle: '@subnubapp',
+                    site: '@subnubapp',
+                    cardType: 'summary',
+                }}
+            />
+            <h1 style={{display: 'none'}}>SubNub: Drop-in audio chat social network</h1>
             <Box className={classes.heroPara}>
                 SubNub is a casual & moderated
                 <br />

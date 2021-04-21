@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Head from 'next/head';
 import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from '../src/theme';
 import Layout from "../components/layout";
+import { DefaultSeo } from 'next-seo';
+import SEO from './next-seo.config';
 
-export default function MyApp(props) {
+export default function SubNubWeb(props) {
   const { Component, pageProps } = props;
 
   React.useEffect(() => {
@@ -19,22 +20,19 @@ export default function MyApp(props) {
 
   return (
       <React.Fragment>
-        <Head>
-          <title>My page</title>
-          <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
-        </Head>
-        <ThemeProvider theme={theme}>
-          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-          <CssBaseline />
-          <Layout>
-              <Component {...pageProps} />
-          </Layout>
-        </ThemeProvider>
+          <DefaultSeo {...SEO} />
+          <ThemeProvider theme={theme}>
+              {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+              <CssBaseline />
+              <Layout>
+                  <Component {...pageProps} />
+              </Layout>
+          </ThemeProvider>
       </React.Fragment>
   );
 }
 
-MyApp.propTypes = {
+SubNubWeb.propTypes = {
   Component: PropTypes.elementType.isRequired,
   pageProps: PropTypes.object.isRequired,
 };

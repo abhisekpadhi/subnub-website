@@ -10,6 +10,8 @@ import Box from '@material-ui/core/Box';
 import {CLUBHOUSE_BG_COLOR, CLUBHOUSE_BTN_BG_COLOR, CLUBHOUSE_CARD_COLOR} from '../../components/constants';
 import {getProfileScreenDataByUsername} from '../../components/profile-api';
 import Head from 'next/head';
+import {NextSeo} from 'next-seo';
+import {clipText} from '../../components/utils';
 
 function CHProfile(props: any) {
     const classes = useStyles();
@@ -27,27 +29,30 @@ function CHProfile(props: any) {
                 <CircularProgress size={'2rem'} />
             ) : (
                 <>
-                    <Head>
-                        <title>{state.profile.fullName}</title>
-                        <meta name="title" content={state.profile.fullName} />
-                        <meta name="description" content={state.profile.bio} />
-
-                        <meta property="og:type" content="profile" />
-                        <meta property="og:url" content={`https://subnub.com/u/${state.profile.username}`} />
-                        <meta property="og:title" content={state.profile.fullName} />
-                        <meta property="og:description" content={state.profile.bio} />
-                        <meta property="og:image" content={state.profile.profilePicUrl} />
-
-                        <meta property="twitter:card" content="summary" />
-                        <meta property="twitter:site" content="@subnubapp" />
-                        <meta property="twitter:url" content={`https://subnub.com/u/${state.profile.username}`} />
-                        <meta property="twitter:title" content={state.profile.fullName} />
-                        <meta property="twitter:description" content={state.profile.bio} />
-                        <meta property="twitter:image" content={state.profile.profilePicUrl} />
-
-                        <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca&family=Nunito:wght@400;600&display=swap" rel="stylesheet" />
-                        {process.browser && (<link rel="canonical" href={window.location.href}/>)}
-                    </Head>
+                    <NextSeo
+                        title={state.profile.fullName}
+                        description={clipText(state.profile.bio, 170)}
+                        canonical={`https://subnub.com/u/${state.profile.username}`}
+                        openGraph={{
+                            url: `https://subnub.com/u/${state.profile.username}`,
+                            title: state.profile.fullName,
+                            description: clipText(state.profile.bio, 170),
+                            images: [
+                                {
+                                    url: state.profile.profilePicUrl,
+                                    width: 256,
+                                    height: 256,
+                                    alt: `${state.profile.fullName} on SubNub`,
+                                },
+                            ],
+                        }}
+                        twitter={{
+                            handle: '@subnubapp',
+                            site: '@subnubapp',
+                            cardType: 'summary',
+                        }}
+                    />
+                    <h1 style={{display: 'none'}}>{state.profile.fullName} | SubNub</h1>
                     <Card className={classes.root}>
                         <CardContent>
                             <Box display={'flex'} flexDirection={'row'} paddingY={1} flexWrap={'wrap'}>
