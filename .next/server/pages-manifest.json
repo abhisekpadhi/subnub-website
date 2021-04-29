@@ -3,7 +3,5 @@
   "/_document": "pages/_document.js",
   "/_error": "pages/_error.js",
   "/": "pages/index.js",
-  "/c/[communityId]": "pages/c/[communityId].js",
-  "/u/[username]": "pages/u/[username].js",
-  "/support": "pages/support.js"
+  "/social-integration/twitter": "pages/social-integration/twitter.js"
 }
