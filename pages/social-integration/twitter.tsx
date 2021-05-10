@@ -1,24 +1,27 @@
 import React, {useEffect, useState} from 'react';
-import {Container} from '@material-ui/core';
+import {CircularProgress, Container} from '@material-ui/core';
 import {createStyles, makeStyles, Theme} from '@material-ui/core/styles';
-import {CLUBHOUSE_BG_COLOR, CLUBHOUSE_BTN_BG_COLOR, CLUBHOUSE_CARD_COLOR} from '../../components/constants';
-import Box from '@material-ui/core/Box';
-import Button from '@material-ui/core/Button';
-import {AccessTokenUpdateRequest, getOAuthUrl, persistTwitterAccessTokens} from '../../components/api/social-twitter';
-import TwitterIcon from '@material-ui/icons/Twitter';
+import {
+    CLUBHOUSE_BG_COLOR, CLUBHOUSE_BTN_BG_COLOR,
+    SUBNUB_THEME_COLOR
+} from '../../components/constants';
 import {useRouter} from 'next/router';
-import {parseURISearchParams} from '../../components/utils';
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import Button from '@material-ui/core/Button';
 
 interface Props {}
 
 interface State {
     oauthUrl: string;
     twitterScreenName: string;
+    done: boolean;
 }
 
 const initialState = {
     oauthUrl: '',
     twitterScreenName: '',
+    done: false,
 } as State;
 
 function Twitter(props: Props) {
@@ -32,87 +35,36 @@ function Twitter(props: Props) {
     // when user cancelled
     const denied = router.query.denied;
 
-
     useEffect(() => {
         if (!(oauthVerifier && oauthToken)) {
             return
         } else {
             if (oauthToken.length > 0 && oauthVerifier.length > 0) {
-                const url = `https://api.twitter.com/oauth/access_token?oauth_token=${oauthToken}&oauth_verifier=${oauthVerifier}`
-                console.log(`access token url = ${url}`);
-                // fetch(url, {
-                //     method: 'POST',
-                //     mode: 'no-cors',
-                //     headers: {
-                //         'Access-Control-Allow-Origin': '*',
-                //         'Access-Control-Allow-Methods': 'POST',
-                //         'Access-Control-Allow-Headers': 'Origin, Methods, Content-Type',
-                //     }
-                // })
-                //     .then(r => r.text())
-                //     .then(data => {
-                //         const twitterData: any = parseURISearchParams(data)
-                //         console.log(`twitter access token response = ${JSON.stringify(twitterData)}`);
-                //         /*{"oauth_token":"1250375007449972736-kJGQNff0x8oC1gn9SUFPnDcjZZDlW9","oauth_token_secret":"CBrsSilLgOBNipb7nlXwn5wxd0jwHHecBtQ20MGLCRg75","user_id":1250375007449972700,"screen_name":"subnubapp"}*/
-                //         const req = {
-                //             userId: '123',
-                //             twitterUserId: twitterData.user_id,
-                //             twitterScreenName: twitterData.screen_name,
-                //             token: twitterData.oauth_token,
-                //             tokenSecret: twitterData.oauth_token_secret
-                //         } as AccessTokenUpdateRequest;
-                //         console.log(`acess token persist req = ${JSON.stringify(req)}`);
-                //         persistTwitterAccessTokens(req)
-                //             .then(r => {
-                //                 if (r.status === 200) {
-                //                     setState(prevState => ({
-                //                         ...prevState,
-                //                         twitterScreenName: req.twitterScreenName
-                //                     }));
-                //                 } else {
-                //                     alert('Failed to authorize with twitter. Please retry later.');
-                //                 }
-                //             });
-                //     })
+                setState(prevState => ({...prevState, done: true}));
+                window.location.href = `subnub://social-integration?platform=twitter&oauth_token=${oauthToken}&oauth_verifier=${oauthVerifier}`;
             }
         }
     }, [oauthToken, oauthVerifier]);
 
     const [state, setState] = useState<State>(initialState);
-    // @ts-ignore
-    // Twitter.getInitialProps = async () => {
-    //     return {};
-    // }
-    const handleConnectTwitter = async () => {
-        await getOAuthUrl({callbackUrl: window.location.href})
-            .then(r => r.text())
-            .then(url => {
-                console.log(`oauthUrl = ${url}`);
-                setState(state => ({
-                    ...state,
-                    oauthUrl: url
-                }));
-                // Navigate to twitter oauth sign-in
-                window.location.assign(url);
-            });
-    }
+
     return (
         <Container className={classes.container}>
-            {/*<Box display={'flex'} flexDirection={'column'}>*/}
-            {/*    <Button*/}
-            {/*        startIcon={<TwitterIcon />}*/}
-            {/*        variant="contained"*/}
-            {/*        color="primary"*/}
-            {/*        onClick={handleConnectTwitter}*/}
-            {/*        disabled={state.twitterScreenName.length > 0}*/}
-            {/*    >*/}
-            {/*        Connect twitter*/}
-            {/*    </Button>*/}
-            {/*    <Box marginTop={'20px'}>*/}
-            {/*        Connected twitter account: @{state.twitterScreenName}*/}
-
-            {/*    </Box>*/}
-            {/*</Box>*/}
+            {state.done ? (
+                <>
+                    <CheckCircleIcon fontSize={'large'} style={{color: SUBNUB_THEME_COLOR}}/>
+                    <Button
+                        endIcon={<ChevronRightIcon/>}
+                        onClick={() => {
+                            location.href = `subnub://social-integration?platform=twitter&oauth_token=${oauthToken}&oauth_verifier=${oauthVerifier}`;
+                        }}
+                        className={classes.openInAppBtn}>
+                        Return to app
+                    </Button>
+                </>
+                ) : (
+                    <CircularProgress color="primary"/>
+                    )}
         </Container>
     )
 }
@@ -128,6 +80,15 @@ const useStyles = makeStyles((theme: Theme) =>
             justifyContent: 'center',
             backgroundColor: CLUBHOUSE_BG_COLOR,
             marginTop: 60,
+        },
+        openInAppBtn: {
+            padding: 10,
+            paddingLeft: 15,
+            paddingRight: 15,
+            borderRadius: 100,
+            marginTop: 20,
+            backgroundColor: CLUBHOUSE_BTN_BG_COLOR,
+            color: '#414141'
         },
     }),
 );
