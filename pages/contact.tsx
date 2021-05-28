@@ -4,7 +4,7 @@ export default function Contact() {
     return (
         <Head>
             <title>Contact | SubNub</title>
-            <meta httpEquiv="refresh" content="0; URL='https://www.notion.so/Support-075dcb02d9b3442996ba21d2d11f305a'" />
+            <meta httpEquiv="refresh" content="0; URL='https://pages.subnub.com/support'" />
         </Head>
     )
 }

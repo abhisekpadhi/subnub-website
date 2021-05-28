@@ -45,15 +45,20 @@ function Footer() {
                     </Box>
                     <Box display={'flex'} justifyContent={'center'}>
                         <Box display={'flex'} flexDirection={'row'} className={classes.footerLinksContainer}>
+
                             <Box className={classes.footerLinkContainer}>
-                                <a href={'/'} className={classes.footerLink}>
-                                    Home
+                                <a target='_blank'
+                                   href={'https://pages.subnub.com/about'}
+                                   className={classes.footerLink}
+                                >
+                                    About us
                                 </a>
                             </Box>
                             {divider}
+
                             <Box className={classes.footerLinkContainer}>
                                 <a target='_blank'
-                                   href={'https://www.notion.so/SubNub-Join-Our-Founding-Team-64bd9c7f83be4831994f9703158e6427'}
+                                   href={'https://pages.subnub.com/jobs'}
                                    className={classes.footerLink}
                                 >
                                     Jobs
@@ -63,7 +68,7 @@ function Footer() {
 
                             <Box className={classes.footerLinkContainer}>
                                 <a target='_blank'
-                                   href={'https://www.notion.so/SubNub-Blog-f46d004b98e340278d78c4441fa37c98'}
+                                   href={'https://pages.subnub.com/blog'}
                                    className={classes.footerLink}
                                 >
                                     Blog
@@ -72,28 +77,35 @@ function Footer() {
                             {divider}
 
                             <Box className={classes.footerLinkContainer}>
-                                <a href={'https://www.notion.so/Support-075dcb02d9b3442996ba21d2d11f305a'} className={classes.footerLink}>
+                                <a href={'https://pages.subnub.com/support'} className={classes.footerLink}>
                                     Contact
                                 </a>
                             </Box>
                             {divider}
 
                             <Box className={classes.footerLinkContainer}>
-                                <a href={'https://www.notion.so/Guidelines-dee10c3e485c481d8134ee4aa5242dfd'} target={'_blank'} className={classes.footerLink}>
+                                <a href={'https://pages.subnub.com/compliance'} className={classes.footerLink}>
+                                    Compliance
+                                </a>
+                            </Box>
+                            {divider}
+
+                            <Box className={classes.footerLinkContainer}>
+                                <a href={'https://pages.subnub.com/guidelines'} target={'_blank'} className={classes.footerLink}>
                                     Guidelines
                                 </a>
                             </Box>
                             {divider}
 
                             <Box className={classes.footerLinkContainer}>
-                                <a href={'https://www.notion.so/Privacy-policy-6c7fac118fe34ed29213b2ffbab2fa62'} target={'_blank'} className={classes.footerLink}>
+                                <a href={'https://pages.subnub.com/privacy'} target={'_blank'} className={classes.footerLink}>
                                     Privacy
                                 </a>
                             </Box>
                             {divider}
 
                             <Box className={classes.footerLinkContainer}>
-                                <a href={'https://www.notion.so/Terms-of-service-914ce3c155374643a329e829348e5562'} target={'_blank'} className={classes.footerLink}>
+                                <a href={'https://pages.subnub.com/terms'} target={'_blank'} className={classes.footerLink}>
                                     Terms
                                 </a>
                             </Box>
