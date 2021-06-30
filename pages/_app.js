@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from '../src/theme';
-import Layout from "../components/layout";
+import Layout from "../components/Layout";
 import { DefaultSeo } from 'next-seo';
 import SEO from '../components/next-seo.config';
+import '../src/App.css';
 
 export default function SubNubWeb(props) {
   const { Component, pageProps } = props;

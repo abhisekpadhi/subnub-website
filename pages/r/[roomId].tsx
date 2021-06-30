@@ -23,71 +23,73 @@ function CHRoom(props: {data: { room: ScheduledRoom, communityId: string, commun
         room: props.data.room,
     })
     return (
-        <Container className={classes.container}>
-            <NextSeo
-                title={`Live room on ${state.room.title}`}
-                description={clipText(state.room.description, 170)}
-                canonical={`https://subnub.com/sc/${state.room.roomId}`}
-                openGraph={{
-                    url: `https://subnub.com/sc/${state.room.roomId}`,
-                    title: state.room.title,
-                    description: clipText(state.room.description, 170),
-                    images: [
-                        {
-                            url: '/logo512.png',
-                            width: 256,
-                            height: 256,
-                            alt: `Live conversation room on ${state.room.title} | SubNub`,
-                        },
-                    ],
-                }}
-                twitter={{
-                    handle: '@subnubapp',
-                    site: '@subnubapp',
-                    cardType: 'summary',
-                }}
-            />
-            <Card className={classes.root}>
-                <CardContent>
-                    <Typography className={classes.datetime} gutterBottom>
-                        {dayjs(state.room.scheduledAt).format('ddd, D MMM, hh:mm A IST')}
-                    </Typography>
-                    <Typography className={classes.title} gutterBottom>
-                        {state.room.title}
-                    </Typography>
-                    {(state.room.coHosts.length > 0) && (
-                        <Box display={'flex'} flexDirection={'row'} paddingY={1} flexWrap={'wrap'}>
-                            {state.room.coHosts.map(item => (
-                                    <img src={item.profilePicOutputUrl} className={classes.coHostProfilePic}
-                                         alt={item.fullName}/>
-                                )
-                            )}
-                        </Box>)}
-                    <Box display={'flex'} flexDirection={'row'} paddingY={1} flexWrap={'wrap'} fontFamily={'Nunito, sans-serif'} fontStyle={'italic'}>
-                        w/{state.room.coHosts.map(item => (
-                        item.fullName
-                    )).join(',')}
-                    </Box>
-                    <Box display={'flex'} flexDirection={'row'} paddingY={1} flexWrap={'wrap'}>
-                        <Typography className={classes.description} variant="body2" component="p">
-                            {state.room.description}
+        <div className={classes.container}>
+            <Container style={{padding: 40, display: 'flex', flex: 1, alignItems: 'center', flexDirection: 'column', justifyContent: 'center', minHeight: '80vh'}}>
+                <NextSeo
+                    title={`Live room on ${state.room.title}`}
+                    description={clipText(state.room.description, 170)}
+                    canonical={`https://subnub.com/sc/${state.room.roomId}`}
+                    openGraph={{
+                        url: `https://subnub.com/sc/${state.room.roomId}`,
+                        title: state.room.title,
+                        description: clipText(state.room.description, 170),
+                        images: [
+                            {
+                                url: '/logo512.png',
+                                width: 256,
+                                height: 256,
+                                alt: `Live conversation room on ${state.room.title} | SubNub`,
+                            },
+                        ],
+                    }}
+                    twitter={{
+                        handle: '@subnubapp',
+                        site: '@subnubapp',
+                        cardType: 'summary',
+                    }}
+                />
+                <Card className={classes.root}>
+                    <CardContent>
+                        <Typography className={classes.datetime} gutterBottom>
+                            {dayjs(state.room.scheduledAt).format('ddd, D MMM, hh:mm A IST')}
                         </Typography>
-                    </Box>
-                </CardContent>
-                <CardActions className={classes.cardActionsContainer}>
+                        <Typography className={classes.title} gutterBottom>
+                            {state.room.title}
+                        </Typography>
+                        {(state.room.coHosts.length > 0) && (
+                            <Box display={'flex'} flexDirection={'row'} paddingY={1} flexWrap={'wrap'}>
+                                {state.room.coHosts.map(item => (
+                                        <img src={item.profilePicOutputUrl} className={classes.coHostProfilePic}
+                                             alt={item.fullName}/>
+                                    )
+                                )}
+                            </Box>)}
+                        <Box display={'flex'} flexDirection={'row'} paddingY={1} flexWrap={'wrap'} fontFamily={'Nunito, sans-serif'} fontStyle={'italic'}>
+                            w/{state.room.coHosts.map(item => (
+                            item.fullName
+                        )).join(',')}
+                        </Box>
+                        <Box display={'flex'} flexDirection={'row'} paddingY={1} flexWrap={'wrap'}>
+                            <Typography className={classes.description} variant="body2" component="p">
+                                {state.room.description}
+                            </Typography>
+                        </Box>
+                    </CardContent>
+                    <CardActions className={classes.cardActionsContainer}>
 
-                </CardActions>
-            </Card>
-            <Button
-                endIcon={<ChevronRightIcon/>}
-                onClick={() => {
-                    window.open('subnub://r/' + state.room.roomId);
-                }}
-                className={classes.openInAppBtn}
-            >
-                Open in app
-            </Button>
-        </Container>
+                    </CardActions>
+                </Card>
+                <Button
+                    endIcon={<ChevronRightIcon/>}
+                    onClick={() => {
+                        window.open('subnub://r/' + state.room.roomId);
+                    }}
+                    className={classes.openInAppBtn}
+                >
+                    Open in app
+                </Button>
+            </Container>
+        </div>
     );
 }
 
@@ -108,11 +110,9 @@ const useStyles = makeStyles((theme: Theme) =>
             display: 'flex',
             flexDirection: 'column',
             flex: 1,
-            // height: '100vh',
             alignItems: 'center',
             justifyContent: 'center',
             backgroundColor: CLUBHOUSE_BG_COLOR,
-            marginTop: 60,
         },
         root: {
             maxWidth: '80%',

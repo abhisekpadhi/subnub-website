@@ -49,23 +49,25 @@ function Twitter(props: Props) {
     const [state, setState] = useState<State>(initialState);
 
     return (
-        <Container className={classes.container}>
-            {state.done ? (
-                <>
-                    <CheckCircleIcon fontSize={'large'} style={{color: SUBNUB_THEME_COLOR}}/>
-                    <Button
-                        endIcon={<ChevronRightIcon/>}
-                        onClick={() => {
-                            location.href = `subnub://social-integration?platform=twitter&oauth_token=${oauthToken}&oauth_verifier=${oauthVerifier}`;
-                        }}
-                        className={classes.openInAppBtn}>
-                        Return to app
-                    </Button>
-                </>
+        <div className={classes.container}>
+            <Container style={{padding: 40, display: 'flex', flex: 1, alignItems: 'center', flexDirection: 'column', justifyContent: 'center', minHeight: '80vh'}}>
+                {state.done ? (
+                    <>
+                        <CheckCircleIcon fontSize={'large'} style={{color: SUBNUB_THEME_COLOR}}/>
+                        <Button
+                            endIcon={<ChevronRightIcon/>}
+                            onClick={() => {
+                                location.href = `subnub://social-integration?platform=twitter&oauth_token=${oauthToken}&oauth_verifier=${oauthVerifier}`;
+                            }}
+                            className={classes.openInAppBtn}>
+                            Return to app
+                        </Button>
+                    </>
                 ) : (
                     <CircularProgress color="primary"/>
-                    )}
-        </Container>
+                )}
+            </Container>
+        </div>
     )
 }
 
@@ -79,7 +81,6 @@ const useStyles = makeStyles((theme: Theme) =>
             alignItems: 'center',
             justifyContent: 'center',
             backgroundColor: CLUBHOUSE_BG_COLOR,
-            marginTop: 60,
         },
         openInAppBtn: {
             padding: 10,

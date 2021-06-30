@@ -38,11 +38,11 @@ export const getCookieOpts = () => {
 export const authCookieOpts = getCookieOpts();
 
 export const SUBNUB_THEME_COLOR = '#2F68FF';
-export const CLUBHOUSE_BG_COLOR = '#f1edcf';
+export const CLUBHOUSE_BG_COLOR = '#f1f1f1';
 export const CLUBHOUSE_BTN_BG_COLOR = 'rgb(0 0 0 / 6%)';
-export const CLUBHOUSE_CARD_COLOR = '#fafaee';
-export const CLUBHOUSE_GREEN = '#2fb32f';
-export const CLUBHOUSE_ROOM_CONTROL_ICON_BG = '#f3f3f3';
-export const CLUBHOUSE_ROOM_CONTROL_ICON_COLOR = '#777777';
+export const CLUBHOUSE_CARD_COLOR = '#ffffff';
+// export const CLUBHOUSE_GREEN = '#2fb32f';
+// export const CLUBHOUSE_ROOM_CONTROL_ICON_BG = '#f3f3f3';
+// export const CLUBHOUSE_ROOM_CONTROL_ICON_COLOR = '#777777';
 
 export const monthNamesShort = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul","Aug", "Sep", "Oct", "Nov", "Dec"];

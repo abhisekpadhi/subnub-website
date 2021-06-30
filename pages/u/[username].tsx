@@ -4,12 +4,11 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import {CircularProgress, Container} from '@material-ui/core';
+import {Container} from '@material-ui/core';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import Box from '@material-ui/core/Box';
 import {CLUBHOUSE_BG_COLOR, CLUBHOUSE_BTN_BG_COLOR, CLUBHOUSE_CARD_COLOR} from '../../components/constants';
 import {getProfileScreenDataByUsername} from '../../components/api/profile-api';
-import Head from 'next/head';
 import {NextSeo} from 'next-seo';
 import {clipText} from '../../components/utils';
 
@@ -24,65 +23,62 @@ function CHProfile(props: any) {
     });
     // console.log(`received server side props = ${JSON.stringify(props)}`);
     return (
-        <Container className={classes.container}>
-            {state.profile === undefined ? (
-                <CircularProgress size={'2rem'} />
-            ) : (
-                <>
-                    <NextSeo
-                        title={state.profile.fullName}
-                        description={clipText(state.profile.bio, 170)}
-                        canonical={`https://subnub.com/u/${state.profile.username}`}
-                        openGraph={{
-                            url: `https://subnub.com/u/${state.profile.username}`,
-                            title: state.profile.fullName,
-                            description: clipText(state.profile.bio, 170),
-                            images: [
-                                {
-                                    url: state.profile.profilePicUrl,
-                                    width: 256,
-                                    height: 256,
-                                    alt: `${state.profile.fullName} on SubNub`,
-                                },
-                            ],
-                        }}
-                        twitter={{
-                            handle: '@subnubapp',
-                            site: '@subnubapp',
-                            cardType: 'summary',
-                        }}
-                    />
-                    <h1 style={{display: 'none'}}>{state.profile.fullName} | SubNub</h1>
-                    <Card className={classes.root}>
-                        <CardContent>
-                            <Box display={'flex'} flexDirection={'row'} paddingY={1} flexWrap={'wrap'}>
-                                <img src={state.profile.profilePicUrl} className={classes.coHostProfilePic} alt={state.profile.fullName} />
-                            </Box>
-                            <Typography className={classes.title} gutterBottom>
-                                {state.profile.fullName}
+        <div className={classes.container}>
+            <Container style={{padding: 40, display: 'flex', flex: 1, alignItems: 'center', flexDirection: 'column', justifyContent: 'center', minHeight: '80vh'}}>
+                <NextSeo
+                    title={state.profile.fullName}
+                    description={clipText(state.profile.bio, 170)}
+                    canonical={`https://subnub.com/u/${state.profile.username}`}
+                    openGraph={{
+                        url: `https://subnub.com/u/${state.profile.username}`,
+                        title: state.profile.fullName,
+                        description: clipText(state.profile.bio, 170),
+                        images: [
+                            {
+                                url: state.profile.profilePicUrl,
+                                width: 256,
+                                height: 256,
+                                alt: `${state.profile.fullName} on SubNub`,
+                            },
+                        ],
+                    }}
+                    twitter={{
+                        handle: '@subnubapp',
+                        site: '@subnubapp',
+                        cardType: 'summary',
+                    }}
+                />
+                <h1 style={{display: 'none'}}>{state.profile.fullName} | SubNub</h1>
+                <Card className={classes.root}>
+                    <CardContent>
+                        <Box display={'flex'} flexDirection={'row'} paddingY={1} flexWrap={'wrap'}>
+                            <img src={state.profile.profilePicUrl} className={classes.coHostProfilePic} alt={state.profile.fullName} />
+                        </Box>
+                        <Typography className={classes.title} gutterBottom>
+                            {state.profile.fullName}
+                        </Typography>
+                        <Typography className={classes.description} gutterBottom>
+                            @{state.profile.username}
+                        </Typography>
+                        <Box display={'flex'} flexDirection={'row'} paddingY={1} flexWrap={'wrap'}>
+                            <Typography className={classes.description} variant="body2" component="p">
+                                {state.profile.bio}
                             </Typography>
-                            <Typography className={classes.description} gutterBottom>
-                                @{state.profile.username}
-                            </Typography>
-                            <Box display={'flex'} flexDirection={'row'} paddingY={1} flexWrap={'wrap'}>
-                                <Typography className={classes.description} variant="body2" component="p">
-                                    {state.profile.bio}
-                                </Typography>
-                            </Box>
-                        </CardContent>
-                    </Card>
-                    <Button
-                        endIcon={<ChevronRightIcon />}
-                        onClick={() => {
-                            window.open('subnub://u/' + state.profile.username);
-                        }}
-                        className={classes.openInAppBtn}
-                    >
-                        Open in app
-                    </Button>
-                </>
-            )}
-        </Container>
+                        </Box>
+                    </CardContent>
+                </Card>
+                <Button
+                    endIcon={<ChevronRightIcon />}
+                    onClick={() => {
+                        window.open('subnub://u/' + state.profile.username);
+                    }}
+                    className={classes.openInAppBtn}
+                >
+                    Open in app
+                </Button>
+            </Container>
+        </div>
+
     )
 }
 
@@ -96,7 +92,7 @@ export async function getServerSideProps(context: any) {
     return { props: { data } }
 }
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
     createStyles({
         container: {
             display: 'flex',
@@ -106,7 +102,6 @@ const useStyles = makeStyles((theme: Theme) =>
             alignItems: 'center',
             justifyContent: 'center',
             backgroundColor: CLUBHOUSE_BG_COLOR,
-            marginTop: 60,
         },
         root: {
             maxWidth: '80%',
