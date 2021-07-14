@@ -1,6 +1,6 @@
-import {POST_SVC_URL} from '../constants';
+import {API_URL, POST_SVC_URL} from '../constants';
 
-const CLUBHOUSE_API_URL = POST_SVC_URL + '/clubhouse/v1';
+const CLUBHOUSE_API_URL = API_URL + '/api/ch';
 
 export const getProfileScreenDataByUsername = (
     username: string,

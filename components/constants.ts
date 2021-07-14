@@ -6,17 +6,20 @@ interface isvc {
 const svc = {
     prod: {
         POST_SVC_URL: 'https://post-svc.subnub.com',
-        USER_SVC_URL: 'https://user-svc.subnub.com'
+        USER_SVC_URL: 'https://user-svc.subnub.com',
+        API_URL: 'https://api.sbnb.in'
     },
     local: {
         POST_SVC_URL: 'http://localhost:8010',
-        USER_SVC_URL: 'http://localhost:9090'
+        USER_SVC_URL: 'http://localhost:9090',
+        API_URL: 'http://localhost:7080'
     },
 }
 const getApiBaseUrl = (key: string) => {
     return (svc as isvc)[SUBNUB_ENV][key];
 }
 
+export const API_URL = getApiBaseUrl('API_URL');
 export const POST_SVC_URL = getApiBaseUrl('POST_SVC_URL');
 export const USER_SVC_URL = getApiBaseUrl('USER_SVC_URL');
 
