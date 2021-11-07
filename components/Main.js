@@ -14,12 +14,12 @@ function Main(){
             <div>
                 <Features />
             </div>
-            <div>
+            {/*<div>
                 <Video />
             </div>
             <div>
                 <Experience />
-            </div>
+            </div>*/}
         </div>
     )
 }
