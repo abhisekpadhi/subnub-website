@@ -12,7 +12,7 @@ function Main(){
                 <Intro />
             </div>
             <div>
-                <Features />
+                {/*<Features />*/}
             </div>
             {/*<div>
                 <Video />

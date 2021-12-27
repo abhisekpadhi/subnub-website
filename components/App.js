@@ -8,13 +8,13 @@ function App() {
   return (
     <div className="App">
         <NextSeo
-            title={'SubNub: Drop-in audio chat social network'}
-            description="SubNub is a brand new social network that enables creators and audience to connect intimately and casually through audio-only chatroom conversations."
+            title={'SubNub - Solving hard problem of Bharat using technology'}
+            description="SubNub is a startup focussed on solving hard problems of Bharat using technology at nation scale"
             canonical="https://subnub.com/"
             openGraph={{
                 url: 'https://subnub.com/',
-                title: 'SubNub: Drop-in audio chat social network',
-                description: "SubNub is a brand new social network that enables creators and audience to connect intimately and casually through audio-only chatroom conversations.",
+                title: 'SubNub - Solving hard problem of Bharat using technology',
+                description: "SubNub is a startup focussed on solving hard problems of Bharat using technology at nation scale",
                 images: [
                     {
                         url: '/static/img/app_screnshot.png',
