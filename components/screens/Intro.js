@@ -16,7 +16,7 @@ function Intro(){
                         color: 'white',
                     }}
                 >
-                    <strong>Notice</strong> <br /> Our apps and services are offline at the moment due to some unavoidable circumstances.
+                    <strong>Notice</strong> <br /> Our apps and services are offline at the moment due to some unavoidable circumstances until further notice.
                 </div>
                 <div className="intro">
                     <div className='main-text'>
