@@ -1,8 +1,9 @@
 import React from "react";
-import Intro from "./screens/Intro";
+import IntroLicily from "./screens/Intro.licily";
 import Features from "./screens/Features";
 import Video from "./screens/Video";
 import Experience from "./screens/Experience";
+import Intro from "./screens/Intro";
 
 
 function Main(){
@@ -12,7 +13,7 @@ function Main(){
                 <Intro />
             </div>
             <div>
-                {/*<Features />*/}
+                <Features />
             </div>
             {/*<div>
                 <Video />

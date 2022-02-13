@@ -31,7 +31,9 @@ function App() {
             }}
         />
         <div>
+            <NavBar />
             <Main />
+            <Footer />
         </div>
     </div>
   );
