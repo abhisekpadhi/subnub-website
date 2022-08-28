@@ -6,18 +6,18 @@ function Intro(){
     return(
         <div style={{backgroundColor: '#f1f1f1'}}>
             <Container>
-                <div
-                    style={{
-                        padding: '4rem',
-                        textAlign: 'center',
-                        fontSize: '2.4rem',
-                        backgroundColor: '#263798',
-                        marginTop: '1.4rem',
-                        color: 'white',
-                    }}
-                >
-                    <strong>Notice</strong> <br /> Our apps and services are offline at the moment due to some unavoidable circumstances until further notice.
-                </div>
+                {/*<div*/}
+                {/*    style={{*/}
+                {/*        padding: '4rem',*/}
+                {/*        textAlign: 'center',*/}
+                {/*        fontSize: '2.4rem',*/}
+                {/*        backgroundColor: '#263798',*/}
+                {/*        marginTop: '1.4rem',*/}
+                {/*        color: 'white',*/}
+                {/*    }}*/}
+                {/*>*/}
+                {/*    <strong>Notice</strong> <br /> Our apps and services are offline at the moment due to some unavoidable circumstances until further notice.*/}
+                {/*</div>*/}
                 <div className="intro">
                     <div className='main-text'>
                         <div className='heroPara'>
