@@ -7,10 +7,12 @@ a:link, a:visited, a:hover, a:active{
   text-decoration: none;
 }
 .logo{
-  width: 10%;
-  height: 10%;
+  width: 88px;
+  height: 88px;
   min-width: 5%;
   min-height: 5%;
+  border-radius: 999px;
+  margin: 40px;
 }
 .navbar-logo{
   display: flex;
